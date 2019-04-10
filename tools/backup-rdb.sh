@@ -6,7 +6,7 @@ BACKUP_MAX=12
 
 port=${1:-6379}
 backup_dir=${2:-./backup_$port}
-host=$(netstat -nltp | grep :6379|awk '{print $4}'| awk -F: '{print $1}')
+host=$(netstat -nltp | grep :${port} | awk '{print $4}' | awk -F: '{print $1}')
 
 if [[ -z $host ]] || [[ $host == "0.0.0.0" ]]
 then
